@@ -1,4 +1,6 @@
 ﻿using System;
+using SalesOrderOrleans.Handlers;
+using SalesOrderOrleans.Interfaces.Command;
 
 namespace SalesOrderOrleans
 {
@@ -19,6 +21,8 @@ namespace SalesOrderOrleans
             });
 
             Orleans.OrleansClient.Initialize("DevTestClientConfiguration.xml");
+
+            new CreateSalesOrderHandler().Execute(new CreateSalesOrderCommand(Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid()));
 
             // TODO: once the previous call returns, the silo is up and running.
             //       This is the place your custom logic, for example calling client logic
