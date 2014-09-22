@@ -5,7 +5,7 @@ namespace SalesOrderOrleans.Contracts.Domain
 {
     public class SalesOrder
     {
-        private readonly List<SalesOrderLine> _lines;
+        private readonly IList<SalesOrderLine> _lines;
         public Guid Key { get; private set;}
 
         public Guid CustomerKey { get; private set; }
@@ -13,6 +13,7 @@ namespace SalesOrderOrleans.Contracts.Domain
         public Guid WarehouseKey { get; private set; }
 
         public SalesTax Tax { get; private set; }
+        public SalesOrderStatus Status { get; private set; }
 
         public SalesOrder(Guid key, Guid customerKey, Guid warehouseKey)
         {
@@ -33,6 +34,11 @@ namespace SalesOrderOrleans.Contracts.Domain
         public void SetTax(SalesTax tax)
         {
             Tax = tax;
+        }
+
+        public void ChangeStatus(SalesOrderStatus status)
+        {
+            Status = status;
         }
     }
 }

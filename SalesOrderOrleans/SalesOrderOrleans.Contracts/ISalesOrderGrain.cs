@@ -10,5 +10,6 @@ namespace SalesOrderOrleans.Contracts
         Task Create(CreateSalesOrderMessage message);
         Task AssignTax(SalesTax tax);
         Task AddLine(AddSalesOrderLineMessage message);
+        Task Complete(CompleteSalesOrderMessage message);
     }
 }

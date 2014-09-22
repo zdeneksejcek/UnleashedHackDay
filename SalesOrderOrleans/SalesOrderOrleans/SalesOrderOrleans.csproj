@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Handlers\AddSalesOrderLineHandler.cs" />
+    <Compile Include="Handlers\CompleteSalesOrderHandler.cs" />
     <Compile Include="Handlers\CreateSalesOrderHandler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="OrleansHostWrapper.cs" />

@@ -34,6 +34,16 @@ namespace SalesOrderOrleans.GrainsCollection
             return TaskDone.Done;
         }
 
+        public Task Complete(CompleteSalesOrderMessage message)
+        {
+            if (_salesOrder.Status == SalesOrderStatus.Completed)
+                throw new Exception("Order is already complete.");
+
+            _salesOrder.ChangeStatus(SalesOrderStatus.Completed);
+
+            return TaskDone.Done;
+        }
+        
         private bool AlreadyExists()
         {
             return _salesOrder != null;
