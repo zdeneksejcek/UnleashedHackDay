@@ -1,4 +1,5 @@
-﻿using Orleans;
+﻿using System.Threading.Tasks;
+using Orleans;
 using SalesOrderOrleans.Contracts;
 using SalesOrderOrleans.Contracts.Command;
 using SalesOrderOrleans.Contracts.Messages;
@@ -7,7 +8,7 @@ namespace SalesOrderOrleans.Handlers
 {
     public class CreateSalesOrderHandler
     {
-        public async void Execute(CreateSalesOrderCommand command)
+        public async Task Execute(CreateSalesOrderCommand command)
         {
             var message = new CreateSalesOrderMessage(command.SalesOrderKey, command.CustomerKey, command.WarehouseKey);
             
@@ -20,7 +21,6 @@ namespace SalesOrderOrleans.Handlers
             var tax = await customerGrain.GetSaleTax();
 
             await salesOrderGrain.AssignTax(tax);
-
         }
     }
 }
