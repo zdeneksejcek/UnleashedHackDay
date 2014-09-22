@@ -8,7 +8,7 @@ namespace SalesOrderOrleans.Contracts
     public interface ISalesOrderGrain : IGrainWithGuidKey
     {
         Task Create(CreateSalesOrderMessage message);
-        //Task AssignCustomer(CustomerInfo customer);
         Task AssignTax(SalesTax tax);
+        Task AddLine(AddSalesOrderLineMessage message);
     }
 }

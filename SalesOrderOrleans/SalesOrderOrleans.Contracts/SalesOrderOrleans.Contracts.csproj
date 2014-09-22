@@ -44,6 +44,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Command\AddSalesOrderLineCommand.cs" />
     <Compile Include="Command\CreateSalesOrderCommand.cs" />
     <Compile Include="Domain\Customer.cs" />
     <Compile Include="Domain\SalesOrder.cs" />
