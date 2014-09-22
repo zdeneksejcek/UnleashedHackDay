@@ -7,9 +7,8 @@ using SalesOrderOrleans.Contracts.Messages;
 
 namespace SalesOrderOrleans.GrainsCollection
 {
-    public class SalesOrderGrain : Orleans.Grain, ISalesOrderGrain
+    public class SalesOrderGrain : Grain, ISalesOrderGrain
     {
-        //private CustomerInfo _customer;
         private SalesOrder _salesOrder;
 
         public Task Create(CreateSalesOrderMessage message)
@@ -28,25 +27,16 @@ namespace SalesOrderOrleans.GrainsCollection
             return TaskDone.Done;
         }
 
+        public Task AddLine(AddSalesOrderLineMessage message)
+        {
+            var line = new SalesOrderLine(message.ProductKey, message.Quantity, message.Price, message.Comment);
+            _salesOrder.AddLine(line);
+            return TaskDone.Done;
+        }
+
         private bool AlreadyExists()
         {
             return _salesOrder != null;
-        }
-
-        //public Task AssignCustomer(CustomerInfo customer)
-        //{
-        //    _customer = customer;
-        //    return TaskDone.Done;
-        //}
-
-        public Task AddLine(AddSalesOrderLineMessage message)
-        {
-            if (AlreadyExists())
-                throw new Exception("Already exists");
-
-//            _salesOrder = new SalesOrder(message.SalesOrderKey, message.CustomerKey, message.WarehouseKey);
-
-            return TaskDone.Done;
         }
     }
 }

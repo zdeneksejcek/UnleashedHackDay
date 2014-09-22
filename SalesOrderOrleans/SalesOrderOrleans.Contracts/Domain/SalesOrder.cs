@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace SalesOrderOrleans.Contracts.Domain
 {
     public class SalesOrder
     {
+        private readonly List<SalesOrderLine> _lines;
         public Guid Key { get; private set;}
 
         public Guid CustomerKey { get; private set; }
@@ -19,6 +21,13 @@ namespace SalesOrderOrleans.Contracts.Domain
             Key = key;
 
             Tax = new SalesTax {Code = "ZERO", Key = Guid.NewGuid(), Rate = 0 };
+
+            _lines = new List<SalesOrderLine>();
+        }
+
+        public void AddLine(SalesOrderLine line)
+        {
+            _lines.Add(line);
         }
 
         public void SetTax(SalesTax tax)

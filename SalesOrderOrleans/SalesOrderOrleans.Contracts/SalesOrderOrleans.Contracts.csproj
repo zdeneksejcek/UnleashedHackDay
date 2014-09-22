@@ -47,6 +47,7 @@
     <Compile Include="Command\CreateSalesOrderCommand.cs" />
     <Compile Include="Domain\Customer.cs" />
     <Compile Include="Domain\SalesOrder.cs" />
+    <Compile Include="Domain\SalesOrderLine.cs" />
     <Compile Include="Domain\SalesTax.cs" />
     <Compile Include="ICustomerGrain.cs" />
     <Compile Include="ISalesOrderGrain.cs" />
