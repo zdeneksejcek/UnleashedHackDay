@@ -2,7 +2,7 @@
 
 namespace SalesOrderOrleans.Grains
 {
-    public class CustomerGrain : ICustomer
+    public class CustomerGrain : ICustomerGrain
     {
     }
 }
