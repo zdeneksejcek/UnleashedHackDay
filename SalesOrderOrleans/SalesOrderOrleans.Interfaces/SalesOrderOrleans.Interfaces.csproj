@@ -42,9 +42,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomerInfo.cs" />
-    <Compile Include="ICustomer.cs" />
-    <Compile Include="ISalesOrder.cs" />
+    <Compile Include="Command\CreateSalesOrderCommand.cs" />
+    <Compile Include="Domain\Customer.cs" />
+    <Compile Include="Domain\SalesOrder.cs" />
+    <Compile Include="Domain\SalesTax.cs" />
+    <Compile Include="ICustomerGrain.cs" />
+    <Compile Include="ISalesOrderGrain.cs" />
+    <Compile Include="Messages\CreateSalesOrderMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
