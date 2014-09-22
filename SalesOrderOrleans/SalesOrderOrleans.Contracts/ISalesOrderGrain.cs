@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
 using Orleans;
-using SalesOrderOrleans.Interfaces.Domain;
-using SalesOrderOrleans.Interfaces.Messages;
+using SalesOrderOrleans.Contracts.Domain;
+using SalesOrderOrleans.Contracts.Messages;
 
-namespace SalesOrderOrleans.Interfaces
+namespace SalesOrderOrleans.Contracts
 {
     public interface ISalesOrderGrain : IGrainWithGuidKey
     {

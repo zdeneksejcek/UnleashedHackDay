@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SalesOrderOrleans.Interfaces.Messages
+namespace SalesOrderOrleans.Contracts.Messages
 {
     public class CreateSalesOrderMessage
     {

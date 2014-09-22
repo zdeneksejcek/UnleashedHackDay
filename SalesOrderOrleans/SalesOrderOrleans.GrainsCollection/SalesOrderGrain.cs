@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Orleans;
-using SalesOrderOrleans.Interfaces;
-using SalesOrderOrleans.Interfaces.Domain;
-using SalesOrderOrleans.Interfaces.Messages;
+using SalesOrderOrleans.Contracts;
+using SalesOrderOrleans.Contracts.Domain;
+using SalesOrderOrleans.Contracts.Messages;
 
-namespace SalesOrderOrleans.Grains
+namespace SalesOrderOrleans.GrainsCollection
 {
     public class SalesOrderGrain : ISalesOrderGrain
     {
@@ -38,5 +38,15 @@ namespace SalesOrderOrleans.Grains
         //    _customer = customer;
         //    return TaskDone.Done;
         //}
+
+        public Task AddLine(AddSalesOrderLineMessage message)
+        {
+            if (AlreadyExists())
+                throw new Exception("Already exists");
+
+//            _salesOrder = new SalesOrder(message.SalesOrderKey, message.CustomerKey, message.WarehouseKey);
+
+            return TaskDone.Done;
+        }
     }
 }

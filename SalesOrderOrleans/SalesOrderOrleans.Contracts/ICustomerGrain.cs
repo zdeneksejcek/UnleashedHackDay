@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
 using Orleans;
-using SalesOrderOrleans.Interfaces.Domain;
+using SalesOrderOrleans.Contracts.Domain;
 
-namespace SalesOrderOrleans.Interfaces
+namespace SalesOrderOrleans.Contracts
 {
     public interface ICustomerGrain : IGrainWithGuidKey
     {

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
-using SalesOrderOrleans.Interfaces;
-using SalesOrderOrleans.Interfaces.Domain;
+using SalesOrderOrleans.Contracts;
+using SalesOrderOrleans.Contracts.Domain;
 
-namespace SalesOrderOrleans.Grains
+namespace SalesOrderOrleans.GrainsCollection
 {
     public class CustomerGrain : ICustomerGrain
     {

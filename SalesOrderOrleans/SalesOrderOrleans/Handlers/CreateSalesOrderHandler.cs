@@ -1,7 +1,7 @@
 ﻿using Orleans;
-using SalesOrderOrleans.Interfaces;
-using SalesOrderOrleans.Interfaces.Command;
-using SalesOrderOrleans.Interfaces.Messages;
+using SalesOrderOrleans.Contracts;
+using SalesOrderOrleans.Contracts.Command;
+using SalesOrderOrleans.Contracts.Messages;
 
 namespace SalesOrderOrleans.Handlers
 {

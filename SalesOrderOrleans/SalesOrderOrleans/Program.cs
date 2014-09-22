@@ -1,6 +1,6 @@
 ﻿using System;
+using SalesOrderOrleans.Contracts.Command;
 using SalesOrderOrleans.Handlers;
-using SalesOrderOrleans.Interfaces.Command;
 
 namespace SalesOrderOrleans
 {

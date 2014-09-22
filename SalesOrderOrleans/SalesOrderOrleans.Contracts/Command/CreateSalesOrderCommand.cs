@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SalesOrderOrleans.Interfaces.Command
+namespace SalesOrderOrleans.Contracts.Command
 {
     public class CreateSalesOrderCommand
     {

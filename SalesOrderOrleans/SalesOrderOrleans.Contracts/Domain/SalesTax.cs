@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SalesOrderOrleans.Interfaces.Domain
+namespace SalesOrderOrleans.Contracts.Domain
 {
     public class SalesTax
     {
