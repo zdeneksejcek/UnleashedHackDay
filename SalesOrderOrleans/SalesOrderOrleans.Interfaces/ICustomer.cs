@@ -2,7 +2,7 @@
 
 namespace SalesOrderOrleans.Interfaces
 {
-    public interface ICustomer : IGrain
+    public interface ICustomer : IGrainWithGuidKey
     {
     }
 }
