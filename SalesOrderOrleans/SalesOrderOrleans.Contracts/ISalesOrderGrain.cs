@@ -13,6 +13,7 @@ namespace SalesOrderOrleans.Contracts
 
         Task Complete();
 
-        Task Subscribe(ISalesOrderListObserver observer);
+        Task Subscribe(ISalesOrdersObserver observer);
+        Task Unsubscribe(ISalesOrdersObserver observer);
     }
 }

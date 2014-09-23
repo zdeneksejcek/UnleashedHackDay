@@ -52,8 +52,9 @@
     <Compile Include="Domain\SalesOrderLine.cs" />
     <Compile Include="Domain\SalesTax.cs" />
     <Compile Include="ICustomerGrain.cs" />
+    <Compile Include="ISalesOrderCollectionGrain.cs" />
     <Compile Include="ISalesOrderGrain.cs" />
-    <Compile Include="ISalesOrderListObserver.cs" />
+    <Compile Include="ISalesOrdersObserver.cs" />
     <Compile Include="Messages\AddSalesOrderLineMessage.cs" />
     <Compile Include="Messages\CompleteSalesOrderMessage.cs" />
     <Compile Include="Messages\CreateSalesOrderMessage.cs" />

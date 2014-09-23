@@ -52,6 +52,7 @@
     <Compile Include="CustomerGrain.cs" />
     <Compile Include="Properties\orleans.codegen.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SalesOrderCollectionGrain.cs" />
     <Compile Include="SalesOrderGrain.cs" />
     <Compile Include="SalesOrderListObserver.cs" />
   </ItemGroup>

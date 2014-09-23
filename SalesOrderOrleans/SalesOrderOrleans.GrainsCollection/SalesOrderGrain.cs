@@ -10,7 +10,7 @@ namespace SalesOrderOrleans.GrainsCollection
     public class SalesOrderGrain : Grain, ISalesOrderGrain
     {
         private SalesOrder _salesOrder;
-        private readonly ObserverSubscriptionManager<ISalesOrderListObserver> _subscribers = new ObserverSubscriptionManager<ISalesOrderListObserver>();
+        private readonly ObserverSubscriptionManager<ISalesOrdersObserver> _subscribers = new ObserverSubscriptionManager<ISalesOrdersObserver>();
 
         public Task Create(CreateSalesOrderMessage message)
         {
@@ -19,7 +19,7 @@ namespace SalesOrderOrleans.GrainsCollection
 
             _salesOrder = new SalesOrder(message.SalesOrderKey, message.CustomerKey, message.WarehouseKey);
 
-            _subscribers.Notify(x => x.Add(message.SalesOrderKey));
+            _subscribers.Notify(x => x.Notify(message.SalesOrderKey));
 
             return TaskDone.Done;
         }
@@ -48,9 +48,15 @@ namespace SalesOrderOrleans.GrainsCollection
             return TaskDone.Done;
         }
 
-        public Task Subscribe(ISalesOrderListObserver observer)
+        public Task Subscribe(ISalesOrdersObserver observer)
         {
             _subscribers.Subscribe(observer);
+            return TaskDone.Done;
+        }
+
+        public Task Unsubscribe(ISalesOrdersObserver observer)
+        {
+            _subscribers.Unsubscribe(observer);
             return TaskDone.Done;
         }
 

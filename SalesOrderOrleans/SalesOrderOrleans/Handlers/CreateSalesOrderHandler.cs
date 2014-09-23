@@ -15,14 +15,19 @@ namespace SalesOrderOrleans.Handlers
             var message = new CreateSalesOrderMessage(command.SalesOrderKey, command.CustomerKey, command.WarehouseKey);
             var salesOrderGrain = GrainFactory.GetGrain<ISalesOrderGrain>(command.SalesOrderKey);
             
-            var reference = await SalesOrderListObserverFactory.CreateObjectReference(new SalesOrderListObserver());
-            await salesOrderGrain.Subscribe(reference);
+            var referenceList = await SalesOrdersObserverFactory.CreateObjectReference(new SalesOrderListObserver());
+            var referenceDashboard = await SalesOrdersObserverFactory.CreateObjectReference(new OrdersDashboardObserver());
+            await salesOrderGrain.Subscribe(referenceList);
+            await salesOrderGrain.Subscribe(referenceDashboard);
             
             await salesOrderGrain.Create(message);
 
             var customerGrain = GrainFactory.GetGrain<ICustomerGrain>(command.CustomerKey);
             var tax = await customerGrain.GetSaleTax();
             await salesOrderGrain.AssignTax(tax);
+
+            await salesOrderGrain.Unsubscribe(referenceDashboard);
+            await salesOrderGrain.Unsubscribe(referenceList);
         }
     }
 }
