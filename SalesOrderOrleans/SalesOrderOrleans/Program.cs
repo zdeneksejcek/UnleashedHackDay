@@ -1,9 +1,8 @@
-﻿using System;
+﻿using SalesOrderOrleans.Contracts;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading;
-using SalesOrderOrleans.Contracts;
 using SalesOrderOrleans.GrainsCollection.Observers;
 
 namespace SalesOrderOrleans
@@ -32,11 +31,14 @@ namespace SalesOrderOrleans
             var list = new List<Guid>();
             var useCase = new UseCases.CreateSalesOrdersUseCase();
 
-            var referenceList = SalesOrdersObserverFactory.CreateObjectReference(new SalesOrderListObserver()).Result;
-            var referenceDashboard = SalesOrdersObserverFactory.CreateObjectReference(new OrdersDashboardObserver()).Result;
-
-
+            //var referenceList = SalesOrdersObserverFactory.CreateObjectReference(new SalesOrderListObserver()).Result;
+            var objectList = new SalesOrderListObserver();
+            var referenceList = SalesOrdersObserverFactory.CreateObjectReference(objectList).Result;
             useCase.Subscribe(referenceList);
+
+            //var referenceDashboard = SalesOrdersObserverFactory.CreateObjectReference(new OrdersDashboardObserver()).Result;
+            var objectDashboard = new OrdersDashboardObserver();
+            var referenceDashboard = SalesOrdersObserverFactory.CreateObjectReference(objectDashboard).Result;
             useCase.Subscribe(referenceDashboard);
 
             foreach (var i in Enumerable.Range(0, 5))
