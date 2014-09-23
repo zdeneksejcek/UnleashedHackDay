@@ -71,6 +71,10 @@
       <Project>{49C73AA3-EBEE-478B-958E-00B23D6A4E91}</Project>
       <Name>SalesOrderOrleans.Contracts</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SalesOrderOrleans.GrainsCollection\SalesOrderOrleans.GrainsCollection.csproj">
+      <Project>{a144079d-7b74-4db3-bfbf-49f82f2e77a7}</Project>
+      <Name>SalesOrderOrleans.GrainsCollection</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -7,7 +7,7 @@ using SalesOrderOrleans.Contracts.Messages;
 
 namespace SalesOrderOrleans.GrainsCollection
 {
-    public class SalesOrderGrain : ISalesOrderGrain
+    public class SalesOrderGrain : Orleans.Grain, ISalesOrderGrain
     {
         //private CustomerInfo _customer;
         private SalesOrder _salesOrder;

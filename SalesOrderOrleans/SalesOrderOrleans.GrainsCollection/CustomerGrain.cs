@@ -5,7 +5,7 @@ using SalesOrderOrleans.Contracts.Domain;
 
 namespace SalesOrderOrleans.GrainsCollection
 {
-    public class CustomerGrain : ICustomerGrain
+    public class CustomerGrain : Orleans.Grain, ICustomerGrain
     {
         public Task<SalesTax> GetSaleTax()
         {
