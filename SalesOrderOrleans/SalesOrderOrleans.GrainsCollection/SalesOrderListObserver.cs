@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using Orleans;
 using SalesOrderOrleans.Contracts;
 
 namespace SalesOrderOrleans.GrainsCollection
@@ -8,10 +10,11 @@ namespace SalesOrderOrleans.GrainsCollection
     {
         private static readonly IList<Guid> _salesOrderGuidList = new List<Guid>(); 
 
-        public void Add(Guid salesOrderKey)
+        public Task Add(Guid salesOrderKey)
         {
             _salesOrderGuidList.Add(salesOrderKey);
             Console.WriteLine(_salesOrderGuidList.Count);
+            return TaskDone.Done;
         }
 
         public void Delete(Guid saleOrderGuid)
