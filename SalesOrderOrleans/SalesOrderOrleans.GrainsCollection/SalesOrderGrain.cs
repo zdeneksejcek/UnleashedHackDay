@@ -10,6 +10,7 @@ namespace SalesOrderOrleans.GrainsCollection
     public class SalesOrderGrain : Grain, ISalesOrderGrain
     {
         private SalesOrder _salesOrder;
+        private readonly ObserverSubscriptionManager<ISalesOrderListObserver> _subscribers = new ObserverSubscriptionManager<ISalesOrderListObserver>();
 
         public Task Create(CreateSalesOrderMessage message)
         {
@@ -17,6 +18,8 @@ namespace SalesOrderOrleans.GrainsCollection
                 throw new Exception("Already exists");
 
             _salesOrder = new SalesOrder(message.SalesOrderKey, message.CustomerKey, message.WarehouseKey);
+
+            _subscribers.Notify(x => x.Add(message.SalesOrderKey));
 
             return TaskDone.Done;
         }
@@ -42,6 +45,12 @@ namespace SalesOrderOrleans.GrainsCollection
 
             base.DeactivateOnIdle();
 
+            return TaskDone.Done;
+        }
+
+        public Task Subscribe(ISalesOrderListObserver observer)
+        {
+            _subscribers.Subscribe(observer);
             return TaskDone.Done;
         }
 

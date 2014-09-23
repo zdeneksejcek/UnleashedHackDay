@@ -12,5 +12,7 @@ namespace SalesOrderOrleans.Contracts
         Task AddLine(AddSalesOrderLineMessage message);
 
         Task Complete();
+
+        Task Subscribe(ISalesOrderListObserver observer);
     }
 }

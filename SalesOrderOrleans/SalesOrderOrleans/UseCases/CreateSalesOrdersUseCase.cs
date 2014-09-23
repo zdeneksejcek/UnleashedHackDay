@@ -19,8 +19,7 @@ namespace SalesOrderOrleans.UseCases
             {
                 var salesOrderKey = Guid.NewGuid();
 
-                Task createTask = handler.Execute(
-                    new CreateSalesOrderCommand(salesOrderKey, Guid.NewGuid(), Guid.NewGuid()));
+                Task createTask = handler.Execute(new CreateSalesOrderCommand(salesOrderKey, Guid.NewGuid(), Guid.NewGuid()));
 
                 tasks.Add(createTask);
 

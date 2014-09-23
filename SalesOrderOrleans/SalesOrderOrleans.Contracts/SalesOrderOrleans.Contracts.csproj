@@ -53,11 +53,15 @@
     <Compile Include="Domain\SalesTax.cs" />
     <Compile Include="ICustomerGrain.cs" />
     <Compile Include="ISalesOrderGrain.cs" />
+    <Compile Include="ISalesOrderListObserver.cs" />
     <Compile Include="Messages\AddSalesOrderLineMessage.cs" />
     <Compile Include="Messages\CompleteSalesOrderMessage.cs" />
     <Compile Include="Messages\CreateSalesOrderMessage.cs" />
     <Compile Include="Properties\orleans.codegen.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Events\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
