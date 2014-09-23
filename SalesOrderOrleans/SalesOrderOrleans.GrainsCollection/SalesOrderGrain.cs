@@ -30,20 +30,21 @@ namespace SalesOrderOrleans.GrainsCollection
         public Task AddLine(AddSalesOrderLineMessage message)
         {
             var line = new SalesOrderLine(message.ProductKey, message.Quantity, message.Price, message.Comment);
+
             _salesOrder.AddLine(line);
+
             return TaskDone.Done;
         }
 
-        public Task Complete(CompleteSalesOrderMessage message)
+        public Task Complete()
         {
-            if (_salesOrder.Status == SalesOrderStatus.Completed)
-                throw new Exception("Order is already complete.");
+            _salesOrder.Complete();
 
-            _salesOrder.ChangeStatus(SalesOrderStatus.Completed);
+            base.DeactivateOnIdle();
 
             return TaskDone.Done;
         }
-        
+
         private bool AlreadyExists()
         {
             return _salesOrder != null;

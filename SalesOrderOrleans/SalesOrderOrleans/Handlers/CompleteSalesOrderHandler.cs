@@ -1,8 +1,7 @@
-﻿using System.Threading.Tasks;
+using System.Threading.Tasks;
 using Orleans;
 using SalesOrderOrleans.Contracts;
 using SalesOrderOrleans.Contracts.Command;
-using SalesOrderOrleans.Contracts.Messages;
 
 namespace SalesOrderOrleans.Handlers
 {
@@ -10,11 +9,9 @@ namespace SalesOrderOrleans.Handlers
     {
         public async Task Execute(CompleteSalesOrderCommand command)
         {
-            var message = new CompleteSalesOrderMessage(command.SalesOrderKey);
-
             var salesOrderGrain = GrainFactory.GetGrain<ISalesOrderGrain>(command.SalesOrderKey);
 
-            await salesOrderGrain.Complete(message);
+            await salesOrderGrain.Complete();
         }
     }
 }

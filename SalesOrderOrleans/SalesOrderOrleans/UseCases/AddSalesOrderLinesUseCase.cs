@@ -9,7 +9,7 @@ namespace SalesOrderOrleans.UseCases
 {
     public class AddSalesOrderLinesUseCase
     {
-        public void Execute(IList<Guid> salesOrderKeys)
+        public void Execute(IEnumerable<Guid> salesOrderKeys)
         {
             var tasks = new List<Task>();
 
@@ -18,16 +18,20 @@ namespace SalesOrderOrleans.UseCases
             var rand = new Random();
             var numberOfLines = rand.Next(1, 100);
 
-            for (var i = 1; i < numberOfLines; i++)
+            foreach (var salesOrderKey in salesOrderKeys)
             {
-                var task = handler.Execute(new AddSalesOrderLineCommand {
-                    SalesOrderKey = salesOrderKeys[i],
-                    Price = (decimal)rand.NextDouble(),
-                    ProductKey = Guid.NewGuid(),
-                    Quantity = (decimal)rand.NextDouble()
-                });
+                for (var i = 1; i < numberOfLines; i++)
+                {
+                    var task = handler.Execute(new AddSalesOrderLineCommand
+                    {
+                        SalesOrderKey = salesOrderKey,
+                        Price = (decimal)rand.NextDouble(),
+                        ProductKey = Guid.NewGuid(),
+                        Quantity = (decimal)rand.NextDouble()
+                    });
 
-                tasks.Add(task);
+                    tasks.Add(task);
+                }
             }
 
             Task.WaitAll(tasks.ToArray());

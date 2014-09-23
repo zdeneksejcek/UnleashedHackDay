@@ -9,6 +9,8 @@ namespace SalesOrderOrleans.GrainsCollection
     {
         public Task<SalesTax> GetSaleTax()
         {
+            base.DeactivateOnIdle();
+
             return Task.FromResult(new SalesTax {Code = "GST", Key = Guid.NewGuid(), Rate = 0.15M});
         }
     }

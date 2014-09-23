@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
-using SalesOrderOrleans.Contracts.Command;
-using SalesOrderOrleans.Handlers;
 
 namespace SalesOrderOrleans
 {
@@ -34,22 +30,11 @@ namespace SalesOrderOrleans
 
             new UseCases.AddSalesOrderLinesUseCase().Execute(sos.ToList());
 
+            new UseCases.CompleteSalesOrdersUseCase().Execute(sos.ToList());
+
             stopwatch.Stop();
 
             Console.WriteLine(stopwatch.ElapsedMilliseconds);
-
-            //var reList = new List<Task>(1000);
-            //foreach (var ha in Enumerable.Range(1, 1000))
-            //{
-            //    reList.Add(new CreateSalesOrderHandler().Execute(new CreateSalesOrderCommand(Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid())));
-            //    Console.WriteLine("New: " + ha);
-            //}
-
-            // Task.WaitAll(reList.ToArray());
-            
-            // TODO: once the previous call returns, the silo is up and running.
-            //       This is the place your custom logic, for example calling client logic
-            //       or initializing an HTTP front end for accepting incoming requests.
 
             Console.WriteLine("Orleans Silo is running.\nPress Enter to terminate...");
             Console.ReadLine();

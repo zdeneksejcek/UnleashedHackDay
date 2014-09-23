@@ -13,6 +13,7 @@ namespace SalesOrderOrleans.Contracts.Domain
         public Guid WarehouseKey { get; private set; }
 
         public SalesTax Tax { get; private set; }
+
         public SalesOrderStatus Status { get; private set; }
 
         public SalesOrder(Guid key, Guid customerKey, Guid warehouseKey)
@@ -28,6 +29,9 @@ namespace SalesOrderOrleans.Contracts.Domain
 
         public void AddLine(SalesOrderLine line)
         {
+            if (Status != SalesOrderStatus.Open)
+                throw new Exception("Cannot be added");
+
             _lines.Add(line);
         }
 
@@ -36,9 +40,20 @@ namespace SalesOrderOrleans.Contracts.Domain
             Tax = tax;
         }
 
+        public void Complete()
+        {
+            Status = SalesOrderStatus.Completed;
+        }
+
         public void ChangeStatus(SalesOrderStatus status)
         {
             Status = status;
         }
+    }
+
+    public enum SalesOrderStatus
+    {
+        Open,
+        Completed
     }
 }
