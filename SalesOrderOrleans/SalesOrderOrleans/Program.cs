@@ -32,6 +32,8 @@ namespace SalesOrderOrleans
             var sos = 
                 new UseCases.CreateSalesOrdersUseCase().Execute(1000);
 
+            new UseCases.AddSalesOrderLinesUseCase().Execute(sos.ToList());
+
             stopwatch.Stop();
 
             Console.WriteLine(stopwatch.ElapsedMilliseconds);
